@@ -1,0 +1,4 @@
+require =_relative '../lib/RedRocks'
+RedRocks::CLI.new.call
+
+
