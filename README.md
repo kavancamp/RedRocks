@@ -1,5 +1,5 @@
 # RedRocks
-This CLI allows a consumer to browse Events and Concerts at the Red Rocks Amphitheater in Morrisson, Colorado. The stunning Amphitheatre is 10 minutes west of Denver, and features an open-air concept.
+This CLI allows a consumer to browse Events and Concerts at the Red Rocks Amphitheatre in Morrisson, Colorado. The stunning Amphitheatre is 10 minutes west of Denver, and features an open-air concept.
 
 
 ## Installation
