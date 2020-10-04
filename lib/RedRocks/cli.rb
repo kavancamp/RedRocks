@@ -1,8 +1,10 @@
 class RedRocks::CLI
 
     def call
-        RedRocks::Scraper.scrape
         
+        list_events
+        menu
+
     end
 
 
