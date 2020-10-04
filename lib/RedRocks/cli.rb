@@ -1,16 +1,16 @@
 class RedRocks::CLI
 
     def call
-        list_concerts
+        list_events
         menu
     end
 
-    def list_concerts
+    def list_events
 
-        puts "\nConcerts:"
-        @concerts = RedRocks::concerts.all
-        @concerts.each.with_index(1) do |concert, x|
-            puts "#{x}. '#{concert.title}' by #{concert.artist} -  #{concert.timestamp}"
+        puts "\nEvents:"
+        @events = RedRocks::events.all
+        @events.each.with_index(1) do |event, x|
+            puts "#{x}. '#{event.title}' by #{event.artist} -  #{event.date}, #{event.timestamp}"
         end
     end
 
@@ -21,24 +21,24 @@ class RedRocks::CLI
             input = gets.strip.downcase
         
             if input.to_i > 0 && input.to_1 < 3
-                the_concert = @concerts[input.to_i-1]
-                puts "\n\t'#{the_concert.title}' by #{the_concert.artist} - #{the_concert.timestamp}"
-                puts "\n\t#{the_concert.description.capitalize!}" if the_concert.description != nil
-                default = "https://www.redrocksonline.com/events/"
-                if the_concert.url
-                    doc = Nokogiri::HTML(open("#{the_concert.url}"))
-                    concert = doc.search("div.article-body p").text
+                the_event = @events[input.to_i-1]
+                puts "\n\t'#{the_event.title}' by #{the_event.artist} - #{the_event.timestamp}, #{the_event.date}"
+                puts "\n\t#{the_event.description.capitalize!}" if the_event.description != nil
+                default = "https://www.redrocksonline.com/events/?view=calendar"
+                if the_event.url
+                    doc = Nokogiri::HTML(open("#{the_event.url}"))
+                    event = doc.search("div.article-body p").text
                     puts"\n"
-                    puts concert
+                    puts event
                     puts "\n" p;
-                    puts the_concert.url
+                    puts the_event.url
                 else   
-                    puts"\n Take a look at https://www.redrocksonline.com/events/ for more information on the venue and events!"
+                    puts"\n Take a look at https://www.redrocksonline.com/events/?view=calendar for more information on the venue and events!"
                 end
             elsif input == 'exit'
                 goodbye
             elsif inout == 'list'
-                list_concerts
+                list_events
             else 
                 puts "\I dont understand, please try enter 'list', 'exit', or enter the number of a show you want to see"
             end
